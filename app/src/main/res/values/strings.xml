@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Homework02_Program1</string>
+    <string name="tv_v_hex_label_underline"><u>Hexadecimal Conversion</u></string>
+    <string name="tv_v_hex_label">Hexadecimal Conversion</string>
+</resources>

@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl_v_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".MainActivity">
+
+    <ListView
+        android:id="@+id/lv_v_display_colors"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_v_hex_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageButton
+        android:id="@+id/btn_v_save_color"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="36dp"
+        android:background="@drawable/blk_rnd_transparent_btn"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_v_delete"
+        app:layout_constraintStart_toEndOf="@+id/btn_v_random"
+        app:srcCompat="@drawable/blacksave" />
+
+    <ImageButton
+        android:id="@+id/btn_v_delete"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="56dp"
+        android:background="@drawable/blk_rnd_transparent_btn"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_v_save_color"
+        app:srcCompat="@drawable/blackdelete" />
+
+    <ImageButton
+        android:id="@+id/btn_v_random"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="56dp"
+        android:background="@drawable/blk_rnd_transparent_btn"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_v_save_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/blackdice" />
+
+    <TextView
+        android:id="@+id/tv_v_hex_display"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="153dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="153dp"
+        android:layout_marginBottom="2dp"
+        android:background="@drawable/blk_sqr_transparent_label"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="#FFFFFF"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/sb_v_red_seekbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_v_hex_label" />
+
+    <TextView
+        android:id="@+id/tv_v_hex_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="84dp"
+        android:text="@string/tv_v_hex_label"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/iv_v_hex_underline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lv_v_display_colors" />
+
+    <SeekBar
+        android:id="@+id/sb_v_red_seekbar"
+        android:layout_width="0dp"
+        android:layout_height="27dp"
+        android:layout_marginBottom="20dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:max="255"
+        android:progress="255"
+        android:progressTint="@color/design_default_color_error"
+        android:thumb="@android:drawable/radiobutton_on_background"
+        app:layout_constraintBottom_toTopOf="@+id/sb_v_green_seekbar"
+        app:layout_constraintEnd_toStartOf="@+id/tv_v_red_progress"
+        app:layout_constraintStart_toEndOf="@+id/tv_v_red_label" />
+
+    <TextView
+        android:id="@+id/tv_v_blue_progress"
+        android:layout_width="35dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="16dp"
+        android:text="255"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btn_v_delete"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_v_green_progress"
+        android:layout_width="35dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="20dp"
+        android:text="255"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tv_v_blue_progress"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_v_blue_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="23dp"
+        android:layout_marginBottom="16dp"
+        android:text="Blue"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btn_v_random"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_v_red_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginBottom="20dp"
+        android:text="Red"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tv_v_green_label"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_v_red_progress"
+        android:layout_width="35dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="20dp"
+        android:text="255"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tv_v_green_progress"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <SeekBar
+        android:id="@+id/sb_v_blue_seekbar"
+        android:layout_width="0dp"
+        android:layout_height="27dp"
+        android:layout_marginBottom="16dp"
+        android:max="255"
+        android:progress="255"
+        android:progressTint="@android:color/holo_blue_dark"
+        android:thumb="@android:drawable/radiobutton_on_background"
+        app:layout_constraintBottom_toTopOf="@+id/btn_v_delete"
+        app:layout_constraintEnd_toStartOf="@+id/tv_v_blue_progress"
+        app:layout_constraintStart_toEndOf="@+id/tv_v_blue_label" />
+
+    <TextView
+        android:id="@+id/tv_v_green_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="20dp"
+        android:text="Green"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tv_v_blue_label"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <SeekBar
+        android:id="@+id/sb_v_green_seekbar"
+        android:layout_width="0dp"
+        android:layout_height="27dp"
+        android:layout_marginBottom="20dp"
+        android:max="255"
+        android:progress="255"
+        android:progressTint="@android:color/holo_green_light"
+        android:thumb="@android:drawable/radiobutton_on_background"
+        app:layout_constraintBottom_toTopOf="@+id/sb_v_blue_seekbar"
+        app:layout_constraintEnd_toStartOf="@+id/tv_v_green_progress"
+        app:layout_constraintStart_toEndOf="@+id/tv_v_green_label" />
+
+    <ImageView
+        android:id="@+id/iv_v_hex_underline"
+        android:layout_width="0dp"
+        android:layout_height="4dp"
+        android:layout_marginBottom="-3dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_v_hex_display"
+        app:layout_constraintEnd_toEndOf="@+id/tv_v_hex_label"
+        app:layout_constraintStart_toStartOf="@+id/tv_v_hex_label"
+        app:layout_constraintTop_toBottomOf="@+id/tv_v_hex_label"
+        app:srcCompat="@drawable/blk_line_label" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
