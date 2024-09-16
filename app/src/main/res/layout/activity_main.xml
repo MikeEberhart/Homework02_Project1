@@ -8,15 +8,25 @@
     android:background="@color/white"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/iv_v_header_bar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/lv_v_display_colors"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
+        app:srcCompat="@color/gray" />
+
     <ListView
         android:id="@+id/lv_v_display_colors"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="17dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="17dp"
-        android:layout_marginBottom="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/tv_v_hex_label"
+        app:layout_constraintBottom_toTopOf="@+id/tv_v_error_display"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -88,7 +98,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
-        android:layout_marginTop="4dp"
         android:layout_marginEnd="84dp"
         android:text="@string/tv_v_hex_label"
         android:textAlignment="center"
@@ -98,7 +107,7 @@
         app:layout_constraintBottom_toTopOf="@+id/iv_v_hex_underline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lv_v_display_colors" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_v_error_display" />
 
     <SeekBar
         android:id="@+id/sb_v_red_seekbar"
@@ -235,5 +244,21 @@
         app:layout_constraintStart_toStartOf="@+id/tv_v_hex_label"
         app:layout_constraintTop_toBottomOf="@+id/tv_v_hex_label"
         app:srcCompat="@drawable/blk_line_label" />
+
+    <TextView
+        android:id="@+id/tv_v_error_display"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Error: Color Already Exists"
+        android:textAlignment="center"
+        android:textColor="@color/design_default_color_error"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/tv_v_hex_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lv_v_display_colors" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
