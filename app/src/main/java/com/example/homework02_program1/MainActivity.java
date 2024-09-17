@@ -6,7 +6,9 @@
 package com.example.homework02_program1;
 
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.Telephony;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -266,19 +268,8 @@ public class MainActivity extends AppCompatActivity {
             Log.d("---SaveColorData---","SaveColorData");
         }
         else{
-//            tv_j_error_display.setVisibility(View.VISIBLE);
-            Log.d("---DontSaveColorData---","DontSaveColorData");
-//            for(int i = 0; i < 5; i++){
-//                tv_j_error_display.setVisibility(View.INVISIBLE);
-//                try {
-//                    Thread.sleep(500);
-//                } catch (InterruptedException e) {
-//                    throw new RuntimeException(e);
-//                }
-//                tv_j_error_display.setVisibility(View.VISIBLE);
-//            }
-//            tv_j_error_display.setVisibility(View.INVISIBLE);
-
+            // need some kind of error message or just detele it since its not needed
+            //tv_j_error_display.setVisibility(View.VISIBLE);
         }
     }
 }
