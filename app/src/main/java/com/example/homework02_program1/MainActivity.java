@@ -6,9 +6,7 @@
 package com.example.homework02_program1;
 
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.Telephony;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -240,6 +240,7 @@ public class MainActivity extends AppCompatActivity {
         adapter_main = new ColorDisplayAdapter(this, main_list_of_colors);
         lv_j_display_colors.setAdapter(adapter_main);
     }
+    // function used to check and see if the color attempting to be saved is already saved in list of colors
     private Boolean ContainsColorAlready(int red, int green, int blue) {
         Log.d("---ContainsColor---", "ContainsColor");
         String hex = String.format("#%02X%02X%02X", red, green, blue);
@@ -250,7 +251,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return false;
     }
-
+    // function used to save the color to the list of colors
     private void SaveColorData() {
         int r = rgb_red_value;
         int g = rgb_green_value;
@@ -268,8 +269,25 @@ public class MainActivity extends AppCompatActivity {
             Log.d("---SaveColorData---","SaveColorData");
         }
         else{
-            // need some kind of error message or just detele it since its not needed
-            //tv_j_error_display.setVisibility(View.VISIBLE);
+            ErrorMessage();
+            //PopUpError();
         }
     }
+    // function used to show the error message for 2 seconds before setting it to invisible again
+    // after some research and reading I found this postDelayed method
+    // was trying to use wait() with a try-catch like android studio was suggesting
+    // along with some other ideas but nothing really worked like how I needed it to
+    private void ErrorMessage(){
+        tv_j_error_display.setVisibility(View.VISIBLE);
+        tv_j_error_display.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                tv_j_error_display.setVisibility(View.INVISIBLE);
+            }
+        }, 2000);
+    }
+//    thought about using this for an error message as well but liked the way ErrorMessaged looked over this
+//    private void PopUpError(){
+//        Toast.makeText(this,"ERROR: COLOR ALREADY EXISTS", Toast.LENGTH_SHORT).show();
+//    }
 }
