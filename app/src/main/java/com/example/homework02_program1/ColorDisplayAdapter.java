@@ -15,34 +15,41 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class ColorDisplayAdapter extends BaseAdapter {
+public class ColorDisplayAdapter extends BaseAdapter
+{
 
     Context cda_context_main;
     ArrayList<ColorData> cda_color_data_list;
 
-    public ColorDisplayAdapter(Context c, ArrayList<ColorData> cd) {
+    public ColorDisplayAdapter(Context c, ArrayList<ColorData> cd)
+    {
         cda_context_main = c;
         cda_color_data_list = cd;
     }
 
     @Override
-    public int getCount() {
+    public int getCount()
+    {
         return cda_color_data_list.size();
     }
 
     @Override
-    public Object getItem(int i) {
+    public Object getItem(int i)
+    {
         return cda_color_data_list.get(i);
     }
 
     @Override
-    public long getItemId(int i) {
+    public long getItemId(int i)
+    {
         return i;
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup group) {
-        if(view == null){
+    public View getView(int i, View view, ViewGroup group)
+    {
+        if(view == null)
+        {
             LayoutInflater mInflater = (LayoutInflater) cda_context_main.getSystemService(MainActivity.LAYOUT_INFLATER_SERVICE);
             view = mInflater.inflate(R.layout.color_data_cell, null);
         }
@@ -60,7 +67,8 @@ public class ColorDisplayAdapter extends BaseAdapter {
         tv_j2_red_progress.setText(Integer.toString(cd.getRed()));
         tv_j2_green_progress.setText(Integer.toString(cd.getGreen()));
         tv_j2_blue_progress.setText(Integer.toString(cd.getBlue()));
-        if(cd.getTextColor()) {
+        if(cd.getTextColor())
+        {
             tv_j2_hex_label.setTextColor(Color.BLACK);
             tv_j2_red_label.setTextColor(Color.BLACK);
             tv_j2_green_label.setTextColor(Color.BLACK);
@@ -70,7 +78,8 @@ public class ColorDisplayAdapter extends BaseAdapter {
             tv_j2_green_progress.setTextColor(Color.BLACK);
             tv_j2_blue_progress.setTextColor(Color.BLACK);
         }
-        else{
+        else
+        {
             tv_j2_hex_label.setTextColor(Color.WHITE);
             tv_j2_red_label.setTextColor(Color.WHITE);
             tv_j2_green_label.setTextColor(Color.WHITE);

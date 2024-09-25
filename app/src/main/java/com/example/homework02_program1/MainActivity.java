@@ -16,14 +16,15 @@ import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+{
     ConstraintLayout cLayout;
     ListView lv_j_display_colors;
     TextView tv_j_hex_label;
@@ -52,7 +53,8 @@ public class MainActivity extends AppCompatActivity {
     int pos_of_selected;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
@@ -88,10 +90,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // function used to listen for the onTouch events
-    private void ButtonClickEvents() {
-        btn_j_random.setOnClickListener(new View.OnClickListener() {
+    private void ButtonClickEvents()
+    {
+        btn_j_random.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 Random ran = new Random();
                 int random_red = ran.nextInt(256);
                 int random_green = ran.nextInt(256);
@@ -100,17 +105,21 @@ public class MainActivity extends AppCompatActivity {
                 main_color_selected = false;
             }
         });
-        btn_j_save_color.setOnClickListener(new View.OnClickListener() {
+        btn_j_save_color.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 SaveColorData();
                 SettingBackgroundAndHex(255,255,255);
                 main_color_selected = false;
             }
         });
-        btn_j_delete.setOnClickListener(new View.OnClickListener() {
+        btn_j_delete.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 if(main_color_selected)
                 {
                     main_list_of_colors.remove(pos_of_selected);
@@ -120,9 +129,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        lv_j_display_colors.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        lv_j_display_colors.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
                 ColorData cd_list_pos = main_list_of_colors.get(position);
                 pos_of_selected = position;
                 main_color_selected = true;
@@ -133,56 +144,83 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // function used to listen for the Seekbar change and to then update the variables depending on which seekbar is used
-    private void SeekBarEvent() {
-        sb_j_red_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+    private void SeekBarEvent()
+    {
+        sb_j_red_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
+        {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
+            {
                 tv_j_red_progress.setText(Integer.toString(progress));
                 rgb_red_value = progress;
                 GuiColorSwitch(rgb_red_value, rgb_green_value, rgb_blue_value);
                 SettingBackgroundAndHex(rgb_red_value, rgb_green_value, rgb_blue_value);
             }
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
+            public void onStartTrackingTouch(SeekBar seekBar)
+            {
+
             }
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
+            public void onStopTrackingTouch(SeekBar seekBar)
+            {
+
             }
         });
-        sb_j_green_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        sb_j_green_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
+        {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
+            {
                 tv_j_green_progress.setText(Integer.toString(progress));
                 rgb_green_value = progress;
                 GuiColorSwitch(rgb_red_value, rgb_green_value, rgb_blue_value);
                 SettingBackgroundAndHex(rgb_red_value, rgb_green_value, rgb_blue_value);
             }
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
+            public void onStartTrackingTouch(SeekBar seekBar)
+            {
+
             }
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
+            public void onStopTrackingTouch(SeekBar seekBar)
+            {
+
             }
         });
-        sb_j_blue_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        sb_j_blue_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
+        {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
+            {
                 tv_j_blue_progress.setText(Integer.toString(progress));
                 rgb_blue_value = progress;
                 GuiColorSwitch(rgb_red_value, rgb_green_value, rgb_blue_value);
                 SettingBackgroundAndHex(rgb_red_value, rgb_green_value, rgb_blue_value);
             }
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
+            public void onStartTrackingTouch(SeekBar seekBar)
+            {
+
             }
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
+            public void onStopTrackingTouch(SeekBar seekBar)
+            {
+
             }
         });
     }
 
+    // function used to populate the listview with data
+    private void PopulateListView()
+    {
+        adapter_main = new ColorDisplayAdapter(this, main_list_of_colors);
+        lv_j_display_colors.setAdapter(adapter_main);
+    }
+
     // function used to set the background color and update the hex display and rgb displays
-    private void SettingBackgroundAndHex(int r, int g, int b) {
+    private void SettingBackgroundAndHex(int r, int g, int b)
+    {
         cLayout.setBackgroundColor(Color.rgb(r, g, b));
         String hex = String.format("#%02X%02X%02X",r,g,b);
         sb_j_red_seekbar.setProgress(r);
@@ -192,10 +230,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // function used to switch the GUI colors back and forth from black and white depending rgb values
-    // I made the threshold for switch the colors back and forth at 120 becuase even at 100
+    // I made the threshold for switch the colors back and forth at 120 because even at 100
     // solid colors it seemed hard to see the black GUI, mainly the solid blue.
-    private void GuiColorSwitch(int r, int g, int b) {
-        if(r < 120 && g < 120 && b < 120) {
+    private void GuiColorSwitch(int r, int g, int b)
+    {
+        if(r < 120 && g < 120 && b < 120)
+        {
             tv_j_hex_label.setTextColor(Color.WHITE);
             tv_j_hex_display.setTextColor(Color.WHITE);
             tv_j_hex_display.setBackgroundResource(R.drawable.wht_sqr_transparent_label);
@@ -214,7 +254,8 @@ public class MainActivity extends AppCompatActivity {
             btn_j_delete.setBackgroundResource(R.drawable.wht_rnd_transparent_btn);
             main_text_is_black = false;
         }
-        else {
+        else
+        {
             tv_j_hex_label.setTextColor(Color.BLACK);
             tv_j_hex_display.setTextColor(Color.BLACK);
             tv_j_hex_display.setBackgroundResource(R.drawable.blk_sqr_transparent_label);
@@ -235,59 +276,64 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // function used to set the list view up
-    private void PopulateListView() {
-        adapter_main = new ColorDisplayAdapter(this, main_list_of_colors);
-        lv_j_display_colors.setAdapter(adapter_main);
-    }
     // function used to check and see if the color attempting to be saved is already saved in list of colors
-    private Boolean ContainsColorAlready(int red, int green, int blue) {
+    // Android Studio suggested to use @NonNull
+    @NonNull
+    private Boolean ContainsColorAlready(int red, int green, int blue)
+    {
         Log.d("---ContainsColor---", "ContainsColor");
         String hex = String.format("#%02X%02X%02X", red, green, blue);
-        for (ColorData cd_hex : main_list_of_colors) {
-            if (cd_hex.getHex().equals(hex)) {
+        for (ColorData cd_hex : main_list_of_colors)
+        {
+            if (cd_hex.getHex().equals(hex))
+            {
                 return true;
             }
         }
         return false;
     }
+
     // function used to save the color to the list of colors
-    private void SaveColorData() {
+    private void SaveColorData()
+    {
         int r = rgb_red_value;
         int g = rgb_green_value;
         int b = rgb_blue_value;
-        if(!ContainsColorAlready(r,g,b)) {
+        if(!ContainsColorAlready(r,g,b))
+        {
             String hex = String.format("#%02X%02X%02X",r,g,b);
-            ColorData new_color = new ColorData();
-            new_color.setHex(hex);
-            new_color.setRed(r);
-            new_color.setGreen(g);
-            new_color.setBlue(b);
-            new_color.setTextColor(main_text_is_black);
+            ColorData new_color = new ColorData(hex,r,g,b,main_text_is_black);
             main_list_of_colors.add(new_color);
             adapter_main.notifyDataSetChanged();
             Log.d("---SaveColorData---","SaveColorData");
         }
-        else{
+        else
+        {
             ErrorMessage();
             //PopUpError();
         }
     }
+
     // function used to show the error message for 2 seconds before setting it to invisible again
     // after some research and reading I found this postDelayed method
     // was trying to use wait() with a try-catch like android studio was suggesting
     // along with some other ideas but nothing really worked like how I needed it to
-    private void ErrorMessage(){
+    private void ErrorMessage()
+    {
         tv_j_error_display.setVisibility(View.VISIBLE);
-        tv_j_error_display.postDelayed(new Runnable() {
+        tv_j_error_display.postDelayed(new Runnable()
+        {
             @Override
-            public void run() {
+            public void run()
+            {
                 tv_j_error_display.setVisibility(View.INVISIBLE);
             }
         }, 2000);
     }
+
 //    thought about using this for an error message as well but liked the way ErrorMessaged looked over this
-//    private void PopUpError(){
+//    private void PopUpError()
+//    {
 //        Toast.makeText(this,"ERROR: COLOR ALREADY EXISTS", Toast.LENGTH_SHORT).show();
 //    }
 }
